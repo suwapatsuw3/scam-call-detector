@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+python-dotenv
+torch
+torchaudio
+librosa
+numpy
+pydub
+pyannote.audio
+transformers
+langgraph
+langchain_ollama
+langchain_core
