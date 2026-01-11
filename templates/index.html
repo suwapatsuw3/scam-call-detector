@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛡️ Scam Call Detector - AI Demo</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
+
 <body>
-    <div class="app-container">
+    <div class="app-container compact">
         <!-- Navigation -->
-        <nav class="navbar">
+        <nav class="navbar compact">
             <div class="nav-brand">
                 <span class="brand-icon">🛡️</span>
                 <span class="brand-text">Scam Call Detector</span>
             </div>
-            <div class="nav-tabs">
-                <button class="nav-tab active" data-tab="demo">
-                    <span class="tab-icon">🎙️</span>
-                    Demo
-                </button>
-                <button class="nav-tab" data-tab="architecture">
-                    <span class="tab-icon">📊</span>
-                    Architecture
-                </button>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#demo" class="nav-link">Live Demo</a>
+                <a href="#architecture" class="nav-link">How It Works</a>
+                <a href="#text-check" class="nav-link">Text Check</a>
             </div>
             <div id="connection-status" class="connection-badge">
                 <span class="status-dot"></span>
@@ -34,247 +33,208 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <!-- Demo Tab -->
-            <section id="demo-tab" class="tab-content active">
-                <div class="demo-container">
-                    <!-- Audio Player Section -->
-                    <div class="audio-section">
-                        <div class="section-header">
-                            <h2>🔊 Sample Audio</h2>
-                            <span class="badge">scam_bank.wav</span>
-                        </div>
-                        
-                        <div class="audio-player">
-                            <button id="play-btn" class="play-button">
-                                <span class="play-icon"><i class="fa-solid fa-play"></i></span>
-                            </button>
-                            
-                            <div class="progress-container">
-                                <div class="time-display">
+        <main class="main-content compact">
+
+            <!-- 1. HERO SECTION -->
+            <header id="hero" class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge">AI-Powered Security 🚀</div>
+                    <h1 class="hero-title">
+                        หยุด <span class="text-gradient">มิจฉาชีพ</span><br>
+                        ก่อนที่คุณจะตกเป็นเหยื่อ
+                    </h1>
+                    <p class="hero-subtitle">
+                        ระบบตรวจจับแก๊งคอลเซ็นเตอร์แบบ Real-time ด้วยพลังของ AI Hybrid Pipeline <br>
+                        (Whisper + BERT + SLM) แม่นยำ รวดเร็ว และเข้าใจบริบทภาษาไทย
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#demo" class="btn-primary">
+                            <i class="fa-solid fa-play"></i> ทดลอง Demo
+                        </a>
+                        <a href="#architecture" class="btn-secondary">
+                            <i class="fa-solid fa-microchip"></i> ดูการทำงาน
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="pulse-ring"></div>
+                    <div class="shield-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 2. DEMO SECTION -->
+            <section id="demo" class="section-container demo-section">
+                <div class="section-header center">
+                    <span class="section-tag">LIVE DEMO</span>
+                    <h2>🎧 Real-time Detection</h2>
+                    <p>จำลองสถานการณ์การคุยโทรศัพท์จริง พร้อมการวิเคราะห์สด</p>
+                </div>
+
+                <div class="demo-layout">
+                    <!-- LEFT: Audio + Log Boxes -->
+                    <div class="left-panel">
+                        <!-- Audio Player -->
+                        <div class="audio-section compact">
+                            <div class="audio-player compact">
+                                <button id="play-btn" class="play-button compact" title="Play">
+                                    <span class="play-icon"><i class="fa-solid fa-play"></i></span>
+                                </button>
+                                <button id="restart-btn" class="play-button compact restart" title="Restart">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                </button>
+                                <div class="progress-container compact">
                                     <span id="current-time">0:00</span>
                                     <input type="range" id="seek-bar" value="0" max="100">
                                     <span id="total-time">0:00</span>
                                 </div>
+                                <audio id="audio-source" src="/static/audio/scam_bank.wav"></audio>
                             </div>
-                            
-                            <audio id="audio-source" src="/static/audio/scam_bank.wav"></audio>
-                        </div>
-                    </div>
-
-                    <!-- Status Indicator -->
-                    <div id="status-indicator" class="status-indicator status-safe">
-                        <div class="status-dot"></div>
-                        <span class="status-text">Ready to analyze</span>
-                    </div>
-
-                    <!-- Alert Section (Hidden by default) -->
-                    <div id="alert-section" class="alert-section hidden">
-                        <div class="alert-box">
-                            <div class="alert-header">
-                                <span class="alert-icon">🚨</span>
-                                <span class="alert-title">SCAM DETECTED!</span>
-                                <span id="alert-confidence" class="alert-confidence">92%</span>
-                            </div>
-                            <div class="alert-body">
-                                <p id="alert-reason" class="alert-reason">
-                                    มีการขอข้อมูลส่วนตัวและสร้างความเร่งด่วน
-                                </p>
+                            <div id="status-indicator" class="status-indicator status-safe compact">
+                                <div class="status-dot"></div>
+                                <span class="status-text">Ready</span>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Transcription Section -->
-                    <div class="transcription-section">
-                        <div class="section-header">
-                            <h2>💬 Live Transcription</h2>
-                            <div class="speaker-legend">
-                                <span class="legend-item caller">
-                                    <span class="legend-dot"></span>
-                                    Caller
-                                </span>
-                                <span class="legend-item receiver">
-                                    <span class="legend-dot"></span>
-                                    Receiver
-                                </span>
+                        <!-- 3 Log Boxes -->
+                        <div class="log-stack">
+                            <!-- ASR -->
+                            <div class="log-box">
+                                <div class="log-box-header asr">
+                                    <i class="fa-solid fa-microphone"></i>
+                                    <span>1. Hearing (Whisper)</span>
+                                </div>
+                                <div id="log-asr" class="log-box-content">
+                                    <div class="log-placeholder">Waiting for audio...</div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div id="transcription-box" class="transcription-box">
-                            <div class="transcription-placeholder">
-                                <span>🎧</span>
-                                <p>System is analyzing audio in background...<br>Press Play whenever you are ready.</p>
+
+                            <!-- BERT -->
+                            <div class="log-box">
+                                <div class="log-box-header scam">
+                                    <i class="fa-solid fa-bolt"></i>
+                                    <span>2. Detecting (BERT)</span>
+                                </div>
+                                <div id="log-scam" class="log-box-content">
+                                    <div class="log-placeholder">Waiting for context...</div>
+                                </div>
+                            </div>
+
+                            <!-- SLM -->
+                            <div class="log-box">
+                                <div class="log-box-header slm">
+                                    <i class="fa-solid fa-brain"></i>
+                                    <span>3. Reasoning (Qwen SLM)</span>
+                                </div>
+                                <div id="log-slm" class="log-box-content">
+                                    <div class="log-placeholder">Waiting for trigger...</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Info Cards -->
-                    <div class="info-cards">
-                        <div class="info-card">
-                            <div class="card-icon">🎯</div>
-                            <div class="card-content">
-                                <h3>Caller Identified</h3>
-                                <p id="caller-info">Waiting...</p>
+                    <!-- RIGHT: Transcription -->
+                    <div class="right-panel">
+                        <div class="transcription-section compact">
+                            <div class="section-header compact">
+                                <h2>💬 Live Transcription</h2>
+                                <div class="stats-row">
+                                    <span class="stat-badge"><i class="fa-solid fa-list"></i> <span
+                                            id="segments-count">0</span></span>
+                                    <span class="stat-badge danger"><i class="fa-solid fa-triangle-exclamation"></i>
+                                        <span id="scam-count">0</span></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="info-card">
-                            <div class="card-icon">📝</div>
-                            <div class="card-content">
-                                <h3>Segments Processed</h3>
-                                <p id="segments-count">0</p>
-                            </div>
-                        </div>
-                        <div class="info-card">
-                            <div class="card-icon">⚠️</div>
-                            <div class="card-content">
-                                <h3>Scam Alerts</h3>
-                                <p id="scam-count">0</p>
+
+                            <div id="transcription-box" class="transcription-box compact">
+                                <div class="transcription-placeholder">
+                                    <span>🎧</span>
+                                    <p>กดปุ่ม Play เพื่อเริ่มการจำลอง</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Architecture Tab -->
-            <section id="architecture-tab" class="tab-content">
-                <div class="architecture-container">
-                    <h1 class="arch-title">System Architecture</h1>
-                    <p class="arch-subtitle">How AI models work together to detect scam calls</p>
-                    
-                    <div class="flowchart">
-                        <!-- Input -->
-                        <div class="flow-node input-node">
-                            <div class="node-icon">🎵</div>
-                            <div class="node-content">
-                                <h3>Audio Input</h3>
-                                <p>ไฟล์เสียงบทสนทนา (.wav)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-arrow">↓</div>
-                        
-                        <!-- Model 1 -->
-                        <div class="flow-node model-node">
-                            <div class="node-badge">Model 1</div>
-                            <div class="node-icon">👥</div>
-                            <div class="node-content">
-                                <h3>Pyannote</h3>
-                                <p class="node-subtitle">Speaker Diarization</p>
-                                <p class="node-desc">แยกว่าใครพูดช่วงเวลาไหน</p>
-                            </div>
-                            <div class="node-output">
-                                <code>segments: [{start, end, speaker}]</code>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-arrow">↓</div>
-                        
-                        <!-- Model 2 -->
-                        <div class="flow-node model-node">
-                            <div class="node-badge">Model 2</div>
-                            <div class="node-icon">🗣️</div>
-                            <div class="node-content">
-                                <h3>Whisper Thai</h3>
-                                <p class="node-subtitle">Speech-to-Text (ASR)</p>
-                                <p class="node-desc">แปลงเสียงเป็นข้อความภาษาไทย</p>
-                            </div>
-                            <div class="node-output">
-                                <code>text: "สวัสดีครับ..."</code>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-arrow">↓</div>
-                        
-                        <!-- Model 3 -->
-                        <div class="flow-node model-node">
-                            <div class="node-badge">Model 3</div>
-                            <div class="node-icon">🔍</div>
-                            <div class="node-content">
-                                <h3>WangchanBERTa</h3>
-                                <p class="node-subtitle">Caller Identification</p>
-                                <p class="node-desc">ระบุว่าใครเป็นคนโทรมา (CALLER)</p>
-                            </div>
-                            <div class="node-output">
-                                <code>caller_id: "SPEAKER_01"</code>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-arrow">↓</div>
-                        
-                        <!-- Models 4 & 5 Container -->
-                        <div class="flow-node-group">
-                            <div class="group-label">LangGraph Agent</div>
-                            <div class="group-nodes">
-                                <!-- Model 4 -->
-                                <div class="flow-node model-node small">
-                                    <div class="node-badge">Model 4</div>
-                                    <div class="node-icon">🧠</div>
-                                    <div class="node-content">
-                                        <h3>Scam BERT</h3>
-                                        <p class="node-subtitle">Scam Detection</p>
-                                        <p class="node-desc">ตรวจจับว่าเป็น Scam หรือไม่</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flow-arrow-horizontal">→</div>
-                                
-                                <!-- Model 5 -->
-                                <div class="flow-node model-node small">
-                                    <div class="node-badge">Model 5</div>
-                                    <div class="node-icon">💡</div>
-                                    <div class="node-content">
-                                        <h3>Qwen LLM</h3>
-                                        <p class="node-subtitle">Explainer</p>
-                                        <p class="node-desc">อธิบายเหตุผลว่าทำไมเป็น Scam</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-arrow">↓</div>
-                        
-                        <!-- Output -->
-                        <div class="flow-node output-node">
-                            <div class="node-icon">🚨</div>
-                            <div class="node-content">
-                                <h3>Alert Output</h3>
-                                <p>แจ้งเตือนผู้ใช้พร้อมเหตุผล</p>
-                            </div>
-                        </div>
+            <!-- 3. ARCHITECTURE SECTION -->
+            <section id="architecture" class="section-container architecture-section">
+                <div class="section-header center">
+                    <span class="section-tag">TECHNOLOGY</span>
+                    <h2>⚙️ How It Works</h2>
+                    <p>เบื้องหลังการทำงานด้วย Hybrid AI Pipeline</p>
+                </div>
+
+                <div class="pipeline-flow">
+                    <!-- Step 1 -->
+                    <div class="pipeline-card">
+                        <div class="step-num">01</div>
+                        <div class="icon-box blue"><i class="fa-solid fa-wave-square"></i></div>
+                        <h3>Diarization</h3>
+                        <p>แยกเสียงพูด "ผู้โทร" vs "ผู้รับ" อย่างแม่นยำด้วย Pyannote</p>
                     </div>
-                    
-                    <!-- Memory System -->
-                    <div class="memory-section">
-                        <h2>🧠 Memory System</h2>
-                        <div class="memory-cards">
-                            <div class="memory-card">
-                                <h3>Sliding Window</h3>
-                                <p>เก็บ 5 ข้อความล่าสุดเพื่อให้ context</p>
-                                <code>recent_messages[5]</code>
-                            </div>
-                            <div class="memory-card">
-                                <h3>Suspicious History</h3>
-                                <p>เก็บข้อความน่าสงสัยไว้วิเคราะห์ต่อ</p>
-                                <code>suspicious_history[5]</code>
+                    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <!-- Step 2 -->
+                    <div class="pipeline-card">
+                        <div class="step-num">02</div>
+                        <div class="icon-box cyan"><i class="fa-solid fa-language"></i></div>
+                        <h3>ASR (Whisper)</h3>
+                        <p>แปลงเสียงเป็นข้อความภาษาไทย รองรับเสียงรบกวน</p>
+                    </div>
+                    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <!-- Step 3 -->
+                    <div class="pipeline-card highlight">
+                        <div class="step-num">03</div>
+                        <div class="icon-box red"><i class="fa-solid fa-shield-cat"></i></div>
+                        <h3>Hybrid Detection</h3>
+                        <p>BERT ตรวจจับแพทเทิร์น + SLM วิเคราะห์เหตุผลเชิงลึก</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. TEXT CHECK SECTION -->
+            <section id="text-check" class="section-container text-section">
+                <div class="section-header center">
+                    <span class="section-tag">TRY IT YOURSELF</span>
+                    <h2>⌨️ Text Analyzer</h2>
+                    <p>ทดสอบวิเคราะห์ข้อความ SMS หรือ Chat ที่น่าสงสัย</p>
+                </div>
+
+                <div class="text-check-container">
+                    <div class="text-input-section">
+                        <textarea id="text-input" class="text-input-box"
+                            placeholder="พิมพ์ข้อความที่นี่... เช่น 'ได้รับรางวัล 10,000 บาท กดลิงก์รับเงิน'"></textarea>
+                        <button id="check-text-btn" class="check-text-button">
+                            <i class="fa-solid fa-magnifying-glass"></i> ตรวจสอบข้อความ
+                        </button>
+                    </div>
+
+                    <div class="text-result-section">
+                        <div id="text-result" class="text-result-box">
+                            <div class="text-result-placeholder">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <p>ผลลัพธ์การวิเคราะห์จะแสดงที่นี่</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
         </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>© 2026 Scam Call Detector Project. Powered by Deepmind & KBTG Tech.</p>
+        </footer>
 
         <!-- Toast Container -->
         <div id="toast-container"></div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Built with 🤖 AI Models | KBTG Cybersecurity Demo</p>
-        </footer>
     </div>
 
     <script src="/static/js/script.js"></script>
-    <script>
-        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-    </script>
 </body>
+
 </html>

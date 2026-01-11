@@ -13,3 +13,4 @@ transformers
 langgraph
 langchain_ollama
 langchain_core
+silero-vad

@@ -1,31 +1,26 @@
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
-# --- System Configuration ---
-DEVICE = os.getenv("DEVICE", "cuda")  # หรือ "cpu"
-Use_Mock_AI = os.getenv("USE_MOCK_AI", "False").lower() == "true"  # เปลี่ยนเป็น False เมื่อพร้อมรันโมเดลจริง
+DEVICE = os.getenv("DEVICE", "cuda")
 
-# --- Audio Settings ---
+# Run in pitch-only mode (skip AI model loading for fast startup)
+PITCH_ONLY = os.getenv("PITCH_ONLY", "false").lower() == "true"
+
 SAMPLE_RATE = 16000
 
-# --- Tokens ---
-# ⚠️ ห้าม hardcode token! ใช้ environment variable แทน
 HF_TOKEN = os.getenv("HF_TOKEN", "")
 
-# --- Model Paths (แก้ Path ให้ตรงกับเครื่องคุณ) ---
-# แนะนำให้ย้ายไฟล์โมเดลมาอยู่ใน project หรือชี้ Path ให้ถูก
 MODEL_PATHS = {
-    "CALLER_IDENTIFIER": os.getenv("CALLER_IDENTIFIER_PATH", r"models/caller_identifier"),
-    "SCAM_DETECTOR": os.getenv("SCAM_DETECTOR_PATH", r"models/scam_detector"),
+    "CALLER_IDENTIFIER": os.getenv("CALLER_IDENTIFIER_PATH", r"C:\2Year\KBTGHack\wangchan_finetuned_model2_freeze2\wangchan_finetuned_model2_freeze2\checkpoint-350"),
+    "SCAM_DETECTOR": os.getenv("SCAM_DETECTOR_PATH", r"C:\2Year\KBTGHack\scam_detector_model\checkpoint-1930_best"),
 }
 
-# --- Agent Config ---
 AGENT_CONFIG = {
     "SLIDING_WINDOW_SIZE": 5,
     "SUSPICIOUS_THRESHOLD": 0.5,
     "MAX_SUSPICIOUS_KEEP": 5,
-    "OLLAMA_MODEL": "qwen3:1.7b"
+    "OLLAMA_MODEL": "qwen3:1.7b",
+    "OLLAMA_BASE_URL": os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 }

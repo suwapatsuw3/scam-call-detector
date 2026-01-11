@@ -6,7 +6,7 @@
 
 - Python 3.9+
 - GPU with CUDA support (สำหรับ Production mode)
-- [Ollama](https://ollama.ai/) (สำหรับ LLM)
+- [Ollama](https://ollama.ai/) (สำหรับ SLM)
 
 ## 🏗️ โครงสร้างโปรเจค
 
@@ -85,10 +85,10 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 2. **Whisper Thai** - Speech-to-Text
 3. **WangchanBERTa** - Caller Identification
 4. **Scam BERT** - Scam Detection
-5. **Qwen LLM** - Explanation Generator
+5. **Qwen SLM** - Explanation Generator
 
 ## 📝 Notes
 
 - ต้องมี **GPU** สำหรับโหลดโมเดลจริง
-- ต้องรัน **Ollama** สำหรับ Qwen LLM
+- ต้องรัน **Ollama** สำหรับ Qwen SLM
 - Mock Mode ใช้ข้อมูลจำลองสำหรับ Demo

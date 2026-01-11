@@ -82,7 +82,7 @@ def explainer_node(state: AgentState):
         ข้อความ: "{context}"
         คำอธิบาย:""")
     ])
-    chain = prompt | models.explainer_llm
+    chain = prompt | models.explainer_slm
     response = chain.invoke({"context": state["analysis_text"]})
     return {"reason": response.content.strip()}
 

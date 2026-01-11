@@ -17,7 +17,7 @@ class AIModels:
         return cls._instance
 
     def init_models(self):
-        print("⏳ Loading AI Models... (This may take a while)")
+        print("Loading AI Models... (This may take a while)")
         
         # 1. Diarization
         print("   - Loading Pyannote...")
@@ -33,7 +33,7 @@ class AIModels:
             model="biodatlab/distill-whisper-th-small",
             device=0 if DEVICE == "cuda" else -1
         )
-        # Config ภาษาไทย
+        # Thai config
         self.asr.model.config.forced_decoder_ids = self.asr.tokenizer.get_decoder_prompt_ids(
             language="th", task="transcribe"
         )
@@ -57,12 +57,13 @@ class AIModels:
 
         # 5. Explainer (Ollama)
         print("   - Connecting to Ollama...")
-        self.explainer_llm = ChatOllama(
+        self.explainer_slm = ChatOllama(
             model=AGENT_CONFIG["OLLAMA_MODEL"],
-            temperature=0.3
+            temperature=0.3,
+            base_url=AGENT_CONFIG["OLLAMA_BASE_URL"]
         )
         
-        print("✅ All Models Loaded!")
+        print("All Models Loaded!")
 
 # Helper function to get instance
 def get_models():
