@@ -1,94 +1,134 @@
-# Scam Guard Demo (Merged)
+# 🛡️ Scam Call Detector
 
-โปรเจคนี้รวม Backend จาก `scam_demo_web` (FastAPI + AI Pipeline) กับ Frontend Design จาก `scam_detector_demo copy` (Dark Theme UI)
+An AI-powered real-time scam call detection system using Hybrid AI Pipeline (ASR + BERT + SLM).
+
+## 📊 System Architecture
+
+![System Flow](static/flow/Local+Agent2.png)
+
+The system operates in two modes:
+- **Local Mode**: All AI models run on-device for privacy-first detection
+- **Agent Mode**: Cloud-based AI Agent with RAG and external search for enhanced accuracy
 
 ## 📋 Prerequisites
 
 - Python 3.9+
-- GPU with CUDA support (สำหรับ Production mode)
-- [Ollama](https://ollama.ai/) (สำหรับ SLM)
+- GPU with CUDA support (for Production mode)
+- [Ollama](https://ollama.ai/) (for SLM)
 
-## 🏗️ โครงสร้างโปรเจค
+## 🏗️ Project Structure
 
 ```
-merge/
+scam-call-detector/
 ├── app/
 │   ├── __init__.py
-│   ├── config.py          # Configuration settings
+│   ├── config.py           # Configuration settings
 │   ├── models.py           # AI Models loader
 │   ├── agent_graph.py      # LangGraph Agent
-│   ├── pipeline.py         # Main AI Pipeline
+│   ├── pipeline_hybrid.py  # Main AI Pipeline
 │   └── main.py             # FastAPI server
 ├── static/
-│   ├── audio/              # ใส่ไฟล์เสียงที่นี่
+│   ├── audio/              # Audio files for demo
 │   ├── css/
-│   │   └── style.css       # Dark theme styling
+│   │   ├── style.css       # Demo page styling
+│   │   └── pitch.css       # Main page styling
+│   ├── flow/               # Architecture diagrams
 │   └── js/
-│       └── script.js       # WebSocket + UI logic
+│       ├── script.js       # Demo page logic
+│       └── pitch.js        # Main page logic
 ├── templates/
-│   └── index.html          # Main HTML page
+│   ├── index.html          # Demo page
+│   └── pitch.html          # Main presentation page
 ├── requirements.txt
 ├── run_demo.bat
 └── README.md
 ```
 
-## 🚀 วิธีใช้งาน
+## 🚀 Getting Started
 
-### 1. ติดตั้ง Dependencies
+### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. ตั้งค่า Environment Variables
+### 2. Set Environment Variables
 ```bash
-# สร้างไฟล์ .env จาก template
+# Create .env file from template
 cp .env.example .env
 
-# แก้ไข .env และใส่ค่าที่ถูกต้อง
-# - HF_TOKEN: Hugging Face token ของคุณ
-# - CALLER_IDENTIFIER_PATH: path ไปยังโมเดล caller identifier
-# - SCAM_DETECTOR_PATH: path ไปยังโมเดล scam detector
+# Edit .env and fill in the correct values:
+# - HF_TOKEN: Your Hugging Face token
+# - CALLER_IDENTIFIER_PATH: Path to caller identifier model
+# - SCAM_DETECTOR_PATH: Path to scam detector model
 ```
 
-### 3. เตรียมไฟล์เสียง
-- ใส่ไฟล์ `scam_cyberpolice.wav` ใน folder `static/audio/`
+### 3. Prepare Audio Files
+- Place audio files (`.wav`) in the `static/audio/` folder
 
-### 4. ตั้งค่า Config
-ตั้งค่าผ่าน environment variables หรือแก้ไข `app/config.py`:
-- `USE_MOCK_AI=true` สำหรับ Demo Mode (ไม่ต้องโหลดโมเดลจริง)
-- `USE_MOCK_AI=false` สำหรับ Production (ต้องมี GPU และโมเดล)
+### 4. Configure Settings
+Set via environment variables or edit `app/config.py`:
+- `USE_MOCK_AI=true` for Demo Mode (no real model loading)
+- `USE_MOCK_AI=false` for Production (requires GPU and models)
 
-### 5. รันเซิร์ฟเวอร์
+### 5. Run the Server
 ```bash
 # Windows
 run_demo.bat
 
-# หรือ
+# Or manually
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 5. เปิดเว็บ
-เปิด browser ไปที่ `http://localhost:8000`
+### 6. Open in Browser
+Navigate to `http://localhost:8000`
 
 ## ✨ Features
 
-- **Dark Theme UI** - ดีไซน์สวยงาม ดูง่าย
-- **Real-time WebSocket** - ประมวลผลแบบ Background
-- **Live Transcription** - แสดงผลซิงค์กับเสียง
-- **Scam Alerts** - แจ้งเตือนแบบ Toast + Panel
-- **Architecture Tab** - แสดง System Diagram
-- **Info Cards** - แสดงสถิติการวิเคราะห์
+- **Dark Theme UI** - Modern, clean design
+- **Real-time WebSocket** - Background processing with live updates
+- **Live Transcription** - Audio-synced transcript display
+- **Scam Alerts** - Toast notifications and warning panels
+- **Hybrid Detection** - BERT pattern detection + SLM reasoning
+- **Privacy-First** - On-device AI processing option
 
-## 🔧 AI Models ที่ใช้
+## 🔧 AI Models Used
 
-1. **Pyannote** - Speaker Diarization
-2. **Whisper Thai** - Speech-to-Text
-3. **WangchanBERTa** - Caller Identification
-4. **Scam BERT** - Scam Detection
-5. **Qwen SLM** - Explanation Generator
+| Model | Purpose | Size |
+|-------|---------|------|
+| **Silero VAD** | Voice Activity Detection | 2MB |
+| **distill-whisper-th** | Speech-to-Text (Thai) | 0.2B (Quantized) |
+| **WangchanBERTa** | Caller Identification & Scam Detection | 0.1B (Quantized) |
+| **Qwen3-1.7B** | Explanation Generator | 1.7B |
+
+## 📈 Performance Metrics
+
+Tested on 274 rows of new scam patterns (Jan 5, 2026):
+
+| Metric | Score |
+|--------|-------|
+| Accuracy | 84% |
+| Precision | 85% |
+| Recall | 82% |
+| F1-Score | 83% |
+
+## 🔒 Privacy
+
+- All models can run locally on-device
+- No audio data is sent to external servers
+- NER masking for cloud mode to protect personal information
+- PDPA compliant
 
 ## 📝 Notes
 
-- ต้องมี **GPU** สำหรับโหลดโมเดลจริง
-- ต้องรัน **Ollama** สำหรับ Qwen SLM
-- Mock Mode ใช้ข้อมูลจำลองสำหรับ Demo
+- **GPU** required for loading real models
+- **Ollama** required for Qwen SLM
+- Mock Mode uses simulated data for demo purposes
+- Web demo uses audio file input instead of live microphone
+
+## 👥 Contributors
+
+- [GitHub Repository](https://github.com/suwapatsuw3/scam-call-detector)
+
+## 📄 License
+
+Built with ❤️ for KBTG Hackathon 2026

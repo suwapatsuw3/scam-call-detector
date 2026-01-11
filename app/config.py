@@ -13,8 +13,8 @@ SAMPLE_RATE = 16000
 HF_TOKEN = os.getenv("HF_TOKEN", "")
 
 MODEL_PATHS = {
-    "CALLER_IDENTIFIER": os.getenv("CALLER_IDENTIFIER_PATH", r"C:\2Year\KBTGHack\wangchan_finetuned_model2_freeze2\wangchan_finetuned_model2_freeze2\checkpoint-350"),
-    "SCAM_DETECTOR": os.getenv("SCAM_DETECTOR_PATH", r"C:\2Year\KBTGHack\scam_detector_model\checkpoint-1930_best"),
+    "CALLER_IDENTIFIER": os.getenv("CALLER_IDENTIFIER_PATH", r"D:\NonUni\KBTG_CyberSec\CLS\wangchan_finetuned_model2_freeze2\checkpoint-350"),
+    "SCAM_DETECTOR": os.getenv("SCAM_DETECTOR_PATH", r"D:\NonUni\KBTG_CyberSec\ANL\scam_detector_model -1930_best"),
 }
 
 AGENT_CONFIG = {

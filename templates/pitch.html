@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,11 @@
                 <span class="brand-text">Scam Call Detector</span>
             </div>
             <div class="nav-links">
-                <a href="#story" class="nav-link">Story</a>
+                <a href="#story" class="nav-link">Home</a>
                 <a href="#idea" class="nav-link">Our Idea</a>
+                <a href="#comparison" class="nav-link">Architecture</a>
+                <a href="#privacy" class="nav-link">Privacy</a>
                 <a href="#demo" class="nav-link">Demo</a>
-                <a href="#technical" class="nav-link">Technical</a>
-                <a href="#architecture" class="nav-link">Architecture</a>
             </div>
             <a href="/demo" class="btn-demo-link">
                 <i class="fa-solid fa-play"></i> Try Demo
@@ -60,46 +60,6 @@
                     <a href="/demo" class="btn-secondary">
                         <i class="fa-solid fa-play"></i> Try Demo
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: Our Story -->
-        <section id="our-story" class="story-section">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">OUR STORY</span>
-                    <h2>📞 ปัญหาจากโลกจริง</h2>
-                </div>
-
-                <div class="problem-statement">
-                    <div class="problem-box">
-                        <div class="problem-icon">💔</div>
-                        <h3>แก๊งคอลเซ็นเตอร์หลอกลวง</h3>
-                        <p>
-                            แอบอ้างเป็น <strong>ธนาคาร, ตำรวจไซเบอร์, เจ้าหน้าที่รัฐ</strong><br>
-                            ใช้เทคนิคทางจิตวิทยา สร้างความเร่งด่วน กดดันให้ตัดสินใจผิดพลาด
-                        </p>
-                    </div>
-
-                    <div class="stats-problem">
-                        <div class="stat-item">
-                            <div class="stat-number-big">1.2M+</div>
-                            <div class="stat-label">เหยื่อต่อปี (2023)</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number-big">฿18B</div>
-                            <div class="stat-label">ความเสียหายรวม</div>
-                        </div>
-                    </div>
-
-                    <div class="real-story">
-                        <i class="fa-solid fa-quote-left quote-icon"></i>
-                        <p class="story-text">
-                            "คุณยายของผมโดนหลอก ฿200,000 ด้วยสายที่แอบอ้างเป็นเจ้าหน้าที่ธนาคาร
-                            พูดจาสุภาพ น่าเชื่อถือ จนกระทั่งโอนเงินไปก่อนรู้ตัว..."
-                        </p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -189,7 +149,7 @@
 
                     <!-- LOCAL Flow Diagram -->
                     <div class="local-flow-diagram">
-                        <img src="/static/flow/Local.png" alt="LOCAL Architecture Flow">
+                        <img src="/static/flow/Local2.png" alt="LOCAL Architecture Flow">
                     </div>
 
                     <!-- Description -->
@@ -340,7 +300,7 @@
                         <!-- NER Flow Diagram -->
                         <div class="ner-flow-diagram">
                             <img src="/static/flow/NER.png" alt="NER Privacy Flow: ASR → NER → Cloud LLM">
-                            <p class="diagram-note">*ตัวอย่างเช่น นม <PERSON> โทรมาที่ <ORG>
+                            <p class="diagram-note">*Example: <PERSON> called <ORG>
                             </p>
                         </div>
                     </div>
@@ -384,134 +344,12 @@
             </div>
         </section>
 
-        <!-- Section 6: Hybrid AI Core -->
-        <section id="hybrid" class="hybrid-section dark">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">CORE INNOVATION</span>
-                    <h2>🎯 Hybrid AI = BERT + SLM</h2>
-                    <p>ผสมจุดแข็งของ 2 โลก</p>
-                </div>
-
-                <div class="hybrid-comparison">
-                    <div class="hybrid-col">
-                        <div class="hybrid-icon blue"><i class="fa-solid fa-bolt"></i></div>
-                        <h3>BERT (Fine-tuned)</h3>
-                        <div class="feature-tags">
-                            <span class="tag">⚡ เร็ว < 100ms</span>
-                                    <span class="tag">🎯 แม่นยำ 94.3%</span>
-                                    <span class="tag">🇹🇭 เชี่ยวชาญภาษาไทย</span>
-                        </div>
-                        <p class="description">
-                            <strong>ตรวจจับแพทเทิร์นฉ้อโกง</strong><br>
-                            Fine-tune บน 5,000 ตัวอย่างภาษาไทย<br>
-                            จับคำหลัก + รูปแบบประโยค
-                        </p>
-                    </div>
-
-                    <div class="plus-icon">+</div>
-
-                    <div class="hybrid-col">
-                        <div class="hybrid-icon orange"><i class="fa-solid fa-brain"></i></div>
-                        <h3>SLM (Qwen 2.5 3B)</h3>
-                        <div class="feature-tags">
-                            <span class="tag">🧠 เข้าใจบริบท</span>
-                            <span class="tag">💬 อธิบายได้</span>
-                            <span class="tag">📱 รันบนมือถือได้</span>
-                        </div>
-                        <p class="description">
-                            <strong>วิเคราะห์เหตุผลเชิงลึก</strong><br>
-                            Small Language Model (3B params)<br>
-                            อธิบายว่าทำไมถึงเป็นฉ้อโกง
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 6: Full Workflow -->
-        <section id="workflow" class="workflow-section">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">FULL WORKFLOW</span>
-                    <h2>⚙️ ขั้นตอนการทำงานทั้งหมด</h2>
-                </div>
-
-                <div class="workflow-diagram">
-                    <!-- Step 1 -->
-                    <div class="workflow-step">
-                        <div class="step-number">1</div>
-                        <div class="step-icon blue"><i class="fa-solid fa-phone"></i></div>
-                        <h4>Audio Input</h4>
-                        <p>สายโทรศัพท์เข้ามา</p>
-                    </div>
-
-                    <div class="workflow-arrow">↓</div>
-
-                    <!-- Step 2 -->
-                    <div class="workflow-step">
-                        <div class="step-number">2</div>
-                        <div class="step-icon purple"><i class="fa-solid fa-wave-square"></i></div>
-                        <h4>Speaker Diarization</h4>
-                        <p>Pyannote: แยกเสียง "ผู้โทร" vs "ผู้รับ"</p>
-                        <span class="tech-badge">Pyannote 3.0</span>
-                    </div>
-
-                    <div class="workflow-arrow">↓</div>
-
-                    <!-- Step 3 -->
-                    <div class="workflow-step">
-                        <div class="step-number">3</div>
-                        <div class="step-icon cyan"><i class="fa-solid fa-language"></i></div>
-                        <h4>Speech-to-Text (ASR)</h4>
-                        <p>Whisper: แปลงเสียงเป็นข้อความภาษาไทย</p>
-                        <span class="tech-badge">Whisper Large v3</span>
-                    </div>
-
-                    <div class="workflow-arrow">↓</div>
-
-                    <!-- Step 4 -->
-                    <div class="workflow-step">
-                        <div class="step-number">4</div>
-                        <div class="step-icon green"><i class="fa-solid fa-user-tag"></i></div>
-                        <h4>Caller Identification</h4>
-                        <p>WangchanBERTa: ระบุว่าใครกำลังพูด</p>
-                        <span class="tech-badge">Fine-tuned BERT</span>
-                    </div>
-
-                    <div class="workflow-arrow">↓</div>
-
-                    <!-- Step 5: CORE -->
-                    <div class="workflow-step highlight">
-                        <div class="step-number">5</div>
-                        <div class="step-icon red"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h4>🎯 Hybrid Scam Detection</h4>
-                        <p><strong>BERT</strong> ตรวจจับ + <strong>SLM</strong> อธิบาย</p>
-                        <div class="tech-badges">
-                            <span class="tech-badge">Custom BERT</span>
-                            <span class="tech-badge">Qwen 2.5 3B</span>
-                        </div>
-                    </div>
-
-                    <div class="workflow-arrow">↓</div>
-
-                    <!-- Step 6 -->
-                    <div class="workflow-step">
-                        <div class="step-number">6</div>
-                        <div class="step-icon yellow"><i class="fa-solid fa-bell"></i></div>
-                        <h4>Real-time Alert</h4>
-                        <p>แจ้งเตือนพร้อมเหตุผล</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Section 7: Dataset & Evaluation -->
         <section id="evaluation" class="eval-section dark">
             <div class="container">
                 <div class="section-header center">
                     <span class="section-tag">DATASET & EVALUATION</span>
-                    <h2>📊 ข้อมูลและผลการทดสอบ</h2>
+                    <h2>📊 Dataset & Test Results</h2>
                 </div>
 
                 <div class="eval-grid-2col">
@@ -522,41 +360,46 @@
                             <li><strong>5,000</strong> labeled Thai scam transcripts</li>
                             <li><strong>3,200</strong> legitimate calls</li>
                             <li><strong>1,800</strong> scam calls</li>
-                            <li><strong>120+ hours</strong> of audio</li>
                             <li>Domains: Banking, Police, Government, Lottery</li>
                         </ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #aaa;">
+                            We collected SMS & call scam data from international datasets and translated them to match Thai culture and the latest scam patterns.
+                        </p>
 
                         <h4 style="margin-top: 2rem;">🔍 Detected Patterns</h4>
                         <div class="pattern-tags-compact">
-                            <span>เลขบัญชี</span>
-                            <span>โอนเงิน</span>
-                            <span>รหัส OTP</span>
-                            <span>ตำรวจไซเบอร์</span>
-                            <span>ธนาคารแห่งประเทศไทย</span>
-                            <span>ได้รับรางวัล</span>
-                            <span>อย่าวางสาย</span>
+                            <span>Bank Account</span>
+                            <span>Money Transfer</span>
+                            <span>OTP Code</span>
+                            <span>Cyber Police</span>
+                            <span>Bank of Thailand</span>
+                            <span>Prize Winner</span>
+                            <span>Don't Hang Up</span>
                         </div>
                     </div>
 
                     <!-- Metrics -->
                     <div class="eval-box">
                         <h3><i class="fa-solid fa-chart-line"></i> Performance Metrics</h3>
+                        <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 1rem;">
+                            Tested on <strong>274 rows</strong> of new scam patterns from news (Jan 5, 2026) including popular scammer phrases
+                        </p>
 
                         <div class="metrics-big">
                             <div class="metric-item">
-                                <div class="metric-value">94.3%</div>
+                                <div class="metric-value">84%</div>
                                 <div class="metric-label">Accuracy</div>
                             </div>
                             <div class="metric-item">
-                                <div class="metric-value">93.8%</div>
+                                <div class="metric-value">85%</div>
                                 <div class="metric-label">Precision</div>
                             </div>
                             <div class="metric-item">
-                                <div class="metric-value">94.7%</div>
+                                <div class="metric-value">82%</div>
                                 <div class="metric-label">Recall</div>
                             </div>
                             <div class="metric-item">
-                                <div class="metric-value">94.2%</div>
+                                <div class="metric-value">83%</div>
                                 <div class="metric-label">F1-Score</div>
                             </div>
                         </div>
@@ -570,22 +413,22 @@
             <div class="container">
                 <div class="section-header center">
                     <span class="section-tag">LIVE DEMO</span>
-                    <h2>🎧 ลองใช้ระบบจริง</h2>
-                    <p>จำลองสถานการณ์จริง + ดูการทำงานแบบ Real-time</p>
+                    <h2>🎧 Try the Real System</h2>
+                    <p>Real-time scenario simulation + Live analysis</p>
                 </div>
 
                 <div class="demo-preview-grid">
                     <div class="demo-features">
-                        <h3>ในส่วนนี้คุณจะเห็น:</h3>
+                        <h3>In this section you will see:</h3>
                         <ul class="feature-checklist">
-                            <li><i class="fa-solid fa-check-circle"></i> Live Transcription ซิงค์กับเสียง</li>
-                            <li><i class="fa-solid fa-check-circle"></i> Speaker Diarization ระบุผู้พูด</li>
-                            <li><i class="fa-solid fa-check-circle"></i> BERT ตรวจจับคำสำคัญทันที</li>
-                            <li><i class="fa-solid fa-check-circle"></i> SLM อธิบายเหตุผลอ่านง่าย</li>
-                            <li><i class="fa-solid fa-check-circle"></i> แจ้งเตือนแบบ Real-time</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Live Transcription synced with audio</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Speaker Diarization identifying speakers</li>
+                            <li><i class="fa-solid fa-check-circle"></i> BERT detecting keywords instantly</li>
+                            <li><i class="fa-solid fa-check-circle"></i> SLM explaining reasoning clearly</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Real-time alerts</li>
                         </ul>
                         <a href="/demo" class="btn-primary large" target="_blank">
-                            <i class="fa-solid fa-external-link"></i> เปิด Interactive Demo
+                            <i class="fa-solid fa-external-link"></i> Open Interactive Demo
                         </a>
                     </div>
                     <div class="demo-screenshot-box">
@@ -599,130 +442,12 @@
                             <div class="screenshot-content">
                                 <i class="fa-solid fa-desktop"></i>
                                 <p>Live Demo Interface</p>
-                                <small>Click "เปิด Interactive Demo" เพื่อทดสอบ</small>
+                                <small>Click "Open Interactive Demo" to test</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Section 9: Cloud Architecture -->
-        <section id="architecture" class="architecture-section dark">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">CLOUD ARCHITECTURE</span>
-                    <h2>☁️ Production-Ready Architecture</h2>
-                    <p>สเกลได้ รองรับผู้ใช้พันคนพร้อมกัน</p>
-                </div>
-
-                <div class="cloud-arch-diagram">
-                    <!-- Layer 1: Client -->
-                    <div class="arch-layer">
-                        <div class="layer-title">Client Layer</div>
-                        <div class="layer-boxes">
-                            <div class="arch-node">
-                                <i class="fa-solid fa-mobile-screen"></i>
-                                <span>Mobile App</span>
-                            </div>
-                            <div class="arch-node">
-                                <i class="fa-solid fa-desktop"></i>
-                                <span>Web App</span>
-                            </div>
-                            <div class="arch-node">
-                                <i class="fa-solid fa-headset"></i>
-                                <span>Call Center</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="layer-arrow">↓</div>
-
-                    <!-- Layer 2: Gateway -->
-                    <div class="arch-layer">
-                        <div class="layer-title">API Gateway</div>
-                        <div class="layer-boxes">
-                            <div class="arch-node wide">
-                                <i class="fa-solid fa-shield"></i>
-                                <span>Load Balancer + Auth + Rate Limiting</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="layer-arrow">↓</div>
-
-                    <!-- Layer 3: AI Pipeline (CORE) -->
-                    <div class="arch-layer core">
-                        <div class="layer-title">🎯 AI Pipeline (GPU Cluster)</div>
-                        <div class="layer-boxes">
-                            <div class="arch-node gpu">
-                                <i class="fa-solid fa-wave-square"></i>
-                                <span>Diarization</span>
-                                <small>1x T4 GPU</small>
-                            </div>
-                            <div class="arch-node gpu">
-                                <i class="fa-solid fa-language"></i>
-                                <span>Whisper ASR</span>
-                                <small>2x T4 GPU</small>
-                            </div>
-                            <div class="arch-node gpu">
-                                <i class="fa-solid fa-bolt"></i>
-                                <span>BERT Models</span>
-                                <small>4x T4 GPU</small>
-                            </div>
-                            <div class="arch-node gpu">
-                                <i class="fa-solid fa-brain"></i>
-                                <span>Qwen SLM</span>
-                                <small>2x A10 GPU</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="layer-arrow">↓</div>
-
-                    <!-- Layer 4: Data -->
-                    <div class="arch-layer">
-                        <div class="layer-title">Data Layer</div>
-                        <div class="layer-boxes">
-                            <div class="arch-node">
-                                <i class="fa-solid fa-database"></i>
-                                <span>PostgreSQL</span>
-                                <small>User Data</small>
-                            </div>
-                            <div class="arch-node">
-                                <i class="fa-solid fa-bolt"></i>
-                                <span>Redis</span>
-                                <small>Cache</small>
-                            </div>
-                            <div class="arch-node">
-                                <i class="fa-solid fa-box"></i>
-                                <span>S3 Storage</span>
-                                <small>Audio Files</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cloud Stats -->
-                <div class="cloud-stats-grid">
-                    <div class="cloud-stat-card">
-                        <i class="fa-solid fa-users"></i>
-                        <div class="stat-big">1,000+</div>
-                        <div class="stat-desc">Concurrent Users</div>
-                    </div>
-                    <div class="cloud-stat-card">
-                        <i class="fa-solid fa-gauge-high"></i>
-                        <div class="stat-big">
-                            < 2s</div>
-                                <div class="stat-desc">End-to-End Latency</div>
-                        </div>
-                        <div class="cloud-stat-card">
-                            <i class="fa-solid fa-server"></i>
-                            <div class="stat-big">99.9%</div>
-                            <div class="stat-desc">Uptime SLA</div>
-                        </div>
-                    </div>
-                </div>
         </section>
 
         <!-- Section 10: Research Reference -->
@@ -775,68 +500,6 @@
             </div>
         </section>
 
-        <!-- Section 11: Impact & CTA -->
-        <section class="impact-cta-section">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">IMPACT</span>
-                    <h2>🌍 ผลกระทบที่คาดหวัง</h2>
-                </div>
-
-                <div class="impact-numbers">
-                    <div class="impact-box">
-                        <div class="impact-icon">👵</div>
-                        <h3>ผู้สูงอายุ</h3>
-                        <p>ติดตั้งแอพในมือถือ<br>AI ช่วยฟังทุกสาย</p>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-icon">🏦</div>
-                        <h3>ธนาคาร</h3>
-                        <p>Integrate Call Center<br>ลด Fraud 80%</p>
-                    </div>
-                    <div class="impact-box">
-                        <div class="impact-icon">📱</div>
-                        <h3>Telco</h3>
-                        <p>Network Level Protection<br>ปกป้องทุกคน</p>
-                    </div>
-                </div>
-
-                <div class="projected-box">
-                    <h3>💰 ถ้าใช้ทั่วประเทศ</h3>
-                    <div class="projected-stats">
-                        <div class="proj-stat">
-                            <div class="proj-number">-80%</div>
-                            <div class="proj-label">ลดเหยื่อ</div>
-                        </div>
-                        <div class="proj-divider">|</div>
-                        <div class="proj-stat">
-                            <div class="proj-number">฿14B</div>
-                            <div class="proj-label">ป้องกันความเสียหาย</div>
-                        </div>
-                        <div class="proj-divider">|</div>
-                        <div class="proj-stat">
-                            <div class="proj-number">1M+</div>
-                            <div class="proj-label">คนที่รอด</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="final-cta">
-                    <h2>พร้อมปกป้องคนที่คุณรัก 🛡️</h2>
-                    <p>ร่วมหยุดแก๊งคอลเซ็นเตอร์ด้วยพลัง AI</p>
-                    <div class="cta-buttons">
-                        <a href="/demo" class="btn-primary large">
-                            <i class="fa-solid fa-rocket"></i> ทดลองใช้ฟรี
-                        </a>
-                        <a href="mailto:contact@scamguard.ai" class="btn-secondary large">
-                            <i class="fa-solid fa-envelope"></i> ติดต่อเรา
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer class="pitch-footer">
             <div class="container">
@@ -846,9 +509,8 @@
                         <span class="brand-text">Scam Call Detector</span>
                     </div>
                     <div class="footer-links">
-                        <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/suwapatsuw3/scam-call-detector" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://th.linkedin.com/in/warutchot-rattanaphupha-08441a36b" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                     </div>
                 </div>
                 <p class="footer-copyright">

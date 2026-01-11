@@ -1,31 +1,111 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🛡️ Scam Call Detector - AI Demo</title>
+    <link rel="stylesheet" href="/static/css/pitch.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Override to match main page navbar style */
+        .pitch-navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 30, 0.9) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pitch-navbar .nav-brand .brand-text {
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 50%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .pitch-navbar .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .pitch-navbar .nav-link {
+            color: #a0a0b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .pitch-navbar .nav-link:hover,
+        .pitch-navbar .nav-link.active {
+            color: #ffffff;
+        }
+        .pitch-navbar .btn-demo-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        /* Connection Badge Styles */
+        .connection-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(255,255,255,0.1);
+            color: #a0a0b8;
+        }
+        .connection-badge .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #666;
+        }
+        .connection-badge.connecting .status-dot { background: #fbbf24; animation: pulse 1s infinite; }
+        .connection-badge.processing .status-dot { background: #3b82f6; animation: pulse 1s infinite; }
+        .connection-badge.connected .status-dot { background: #10b981; }
+        .connection-badge.error .status-dot { background: #ef4444; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .main-content {
+            padding-top: 80px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="app-container compact">
+    <div class="pitch-container">
         <!-- Navigation -->
-        <nav class="navbar compact">
+        <nav class="pitch-navbar">
             <div class="nav-brand">
                 <span class="brand-icon">🛡️</span>
                 <span class="brand-text">Scam Call Detector</span>
             </div>
             <div class="nav-links">
-                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#architecture" class="nav-link active">How It Works</a>
                 <a href="#demo" class="nav-link">Live Demo</a>
-                <a href="#architecture" class="nav-link">How It Works</a>
                 <a href="#text-check" class="nav-link">Text Check</a>
             </div>
+            <a href="/" class="btn-demo-link">
+                <i class="fa-solid fa-arrow-left"></i> Back to Main
+            </a>
             <div id="connection-status" class="connection-badge">
                 <span class="status-dot"></span>
                 <span class="status-text">Initializing...</span>
@@ -35,41 +115,35 @@
         <!-- Main Content -->
         <main class="main-content compact">
 
-            <!-- 1. HERO SECTION -->
-            <header id="hero" class="hero-section">
-                <div class="hero-content">
-                    <div class="hero-badge">AI-Powered Security 🚀</div>
-                    <h1 class="hero-title">
-                        หยุด <span class="text-gradient">มิจฉาชีพ</span><br>
-                        ก่อนที่คุณจะตกเป็นเหยื่อ
-                    </h1>
-                    <p class="hero-subtitle">
-                        ระบบตรวจจับแก๊งคอลเซ็นเตอร์แบบ Real-time ด้วยพลังของ AI Hybrid Pipeline <br>
-                        (Whisper + BERT + SLM) แม่นยำ รวดเร็ว และเข้าใจบริบทภาษาไทย
+            <!-- 1. ARCHITECTURE SECTION -->
+            <section id="architecture" class="section-container architecture-section">
+                <div class="section-header center">
+                    <span class="section-tag">TECHNOLOGY</span>
+                    <h2>⚙️ How It Works</h2>
+                </div>
+
+                <div class="architecture-diagram" style="text-align: center; padding: 2rem 0;">
+                    <img src="/static/flow/Demo.png" alt="Demo Architecture Flow" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                    <p style="margin-top: 1.5rem; color: #aaa; font-size: 0.9rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        <strong>Note:</strong> For this web-app demo, the input has been changed from microphone and speaker to audio file (.wav). WangchanBERTa is used to identify who is the CALLER.
                     </p>
-                    <div class="hero-actions">
-                        <a href="#demo" class="btn-primary">
-                            <i class="fa-solid fa-play"></i> ทดลอง Demo
+                    <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <a href="#demo" class="btn-demo-link" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                            <i class="fa-solid fa-play"></i> Live Demo
                         </a>
-                        <a href="#architecture" class="btn-secondary">
-                            <i class="fa-solid fa-microchip"></i> ดูการทำงาน
+                        <a href="#text-check" class="btn-demo-link" style="padding: 1rem 2rem; font-size: 1.1rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <i class="fa-solid fa-keyboard"></i> Text Check
                         </a>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="pulse-ring"></div>
-                    <div class="shield-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                </div>
-            </header>
+            </section>
 
             <!-- 2. DEMO SECTION -->
             <section id="demo" class="section-container demo-section">
                 <div class="section-header center">
                     <span class="section-tag">LIVE DEMO</span>
                     <h2>🎧 Real-time Detection</h2>
-                    <p>จำลองสถานการณ์การคุยโทรศัพท์จริง พร้อมการวิเคราะห์สด</p>
+                    <p>Simulate a real phone conversation with live analysis</p>
                 </div>
 
                 <div class="demo-layout">
@@ -150,7 +224,7 @@
                             <div id="transcription-box" class="transcription-box compact">
                                 <div class="transcription-placeholder">
                                     <span>🎧</span>
-                                    <p>กดปุ่ม Play เพื่อเริ่มการจำลอง</p>
+                                    <p>Press Play to start the simulation</p>
                                 </div>
                             </div>
                         </div>
@@ -158,57 +232,20 @@
                 </div>
             </section>
 
-            <!-- 3. ARCHITECTURE SECTION -->
-            <section id="architecture" class="section-container architecture-section">
-                <div class="section-header center">
-                    <span class="section-tag">TECHNOLOGY</span>
-                    <h2>⚙️ How It Works</h2>
-                    <p>เบื้องหลังการทำงานด้วย Hybrid AI Pipeline</p>
-                </div>
-
-                <div class="pipeline-flow">
-                    <!-- Step 1 -->
-                    <div class="pipeline-card">
-                        <div class="step-num">01</div>
-                        <div class="icon-box blue"><i class="fa-solid fa-wave-square"></i></div>
-                        <h3>Diarization</h3>
-                        <p>แยกเสียงพูด "ผู้โทร" vs "ผู้รับ" อย่างแม่นยำด้วย Pyannote</p>
-                    </div>
-                    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                    <!-- Step 2 -->
-                    <div class="pipeline-card">
-                        <div class="step-num">02</div>
-                        <div class="icon-box cyan"><i class="fa-solid fa-language"></i></div>
-                        <h3>ASR (Whisper)</h3>
-                        <p>แปลงเสียงเป็นข้อความภาษาไทย รองรับเสียงรบกวน</p>
-                    </div>
-                    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-
-                    <!-- Step 3 -->
-                    <div class="pipeline-card highlight">
-                        <div class="step-num">03</div>
-                        <div class="icon-box red"><i class="fa-solid fa-shield-cat"></i></div>
-                        <h3>Hybrid Detection</h3>
-                        <p>BERT ตรวจจับแพทเทิร์น + SLM วิเคราะห์เหตุผลเชิงลึก</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. TEXT CHECK SECTION -->
+            <!-- 3. TEXT CHECK SECTION -->
             <section id="text-check" class="section-container text-section">
                 <div class="section-header center">
                     <span class="section-tag">TRY IT YOURSELF</span>
                     <h2>⌨️ Text Analyzer</h2>
-                    <p>ทดสอบวิเคราะห์ข้อความ SMS หรือ Chat ที่น่าสงสัย</p>
+                    <p>Test and analyze suspicious SMS or Chat messages</p>
                 </div>
 
                 <div class="text-check-container">
                     <div class="text-input-section">
                         <textarea id="text-input" class="text-input-box"
-                            placeholder="พิมพ์ข้อความที่นี่... เช่น 'ได้รับรางวัล 10,000 บาท กดลิงก์รับเงิน'"></textarea>
+                            placeholder="Type your message here... e.g. 'You won 10,000 baht, click the link to receive'"></textarea>
                         <button id="check-text-btn" class="check-text-button">
-                            <i class="fa-solid fa-magnifying-glass"></i> ตรวจสอบข้อความ
+                            <i class="fa-solid fa-magnifying-glass"></i> Check Message
                         </button>
                     </div>
 
@@ -216,7 +253,7 @@
                         <div id="text-result" class="text-result-box">
                             <div class="text-result-placeholder">
                                 <i class="fa-solid fa-shield-halved"></i>
-                                <p>ผลลัพธ์การวิเคราะห์จะแสดงที่นี่</p>
+                                <p>Analysis results will appear here</p>
                             </div>
                         </div>
                     </div>
@@ -226,8 +263,22 @@
         </main>
 
         <!-- Footer -->
-        <footer class="main-footer">
-            <p>© 2026 Scam Call Detector Project. Powered by Deepmind & KBTG Tech.</p>
+        <footer class="pitch-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <span class="brand-icon">🛡️</span>
+                        <span class="brand-text">Scam Call Detector</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="https://github.com/suwapatsuw3/scam-call-detector" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://th.linkedin.com/in/warutchot-rattanaphupha-08441a36b" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <p class="footer-copyright">
+                    © 2026 Scam Call Detector. Built with ❤️ for KBTG Hackathon.
+                </p>
+            </div>
         </footer>
 
         <!-- Toast Container -->
