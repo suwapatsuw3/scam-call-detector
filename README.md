@@ -6,11 +6,11 @@ An AI-powered real-time scam call detection system using Hybrid AI Pipeline (ASR
 
 ## � The Real-World Problem
 
-Call center scam gangs are a growing threat in Thailand, impersonating trusted authorities such as banks, cyber police, and government officials. These fraudsters use psychological manipulation techniques to create a sense of urgency, pressuring victims into making hasty and costly decisions. In 2023 alone, over **1.2 million victims** were affected, resulting in total damages exceeding **฿18 billion**. This alarming trend underscores the urgent need for AI-powered real-time detection to protect users before they fall victim.
+Call center scam gangs are a growing threat in Thailand, impersonating trusted authorities such as banks, cyber police, and government officials. These fraudsters use psychological manipulation techniques to create a sense of urgency, pressuring victims into making hasty and costly decisions. In 2025 alone, over **20 thousand victims** were affected, resulting in total damages exceeding **฿22 billion**. This alarming trend underscores the urgent need for AI-powered real-time detection to protect users before they fall victim.
 
 ## 📊 System Architecture
 
-![System Flow](static/flow/Local+Agent2.png)
+![System Flow](static/flow/Local+Agent3.png)
 
 The system operates in two modes:
 - **Local Mode**: All AI models run on-device for privacy-first detection
