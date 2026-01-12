@@ -4,6 +4,10 @@
 
 An AI-powered real-time scam call detection system using Hybrid AI Pipeline (ASR + BERT + SLM).
 
+## � The Real-World Problem
+
+Call center scam gangs are a growing threat in Thailand, impersonating trusted authorities such as banks, cyber police, and government officials. These fraudsters use psychological manipulation techniques to create a sense of urgency, pressuring victims into making hasty and costly decisions. In 2023 alone, over **1.2 million victims** were affected, resulting in total damages exceeding **฿18 billion**. This alarming trend underscores the urgent need for AI-powered real-time detection to protect users before they fall victim.
+
 ## 📊 System Architecture
 
 ![System Flow](static/flow/Local+Agent2.png)
@@ -11,6 +15,24 @@ An AI-powered real-time scam call detection system using Hybrid AI Pipeline (ASR
 The system operates in two modes:
 - **Local Mode**: All AI models run on-device for privacy-first detection
 - **Agent Mode**: Cloud-based AI Agent with RAG and external search for enhanced accuracy
+
+### 🔄 How It Works
+
+1. **Audio Input** → The system captures the caller's voice from the phone speaker
+2. **Voice Activity Detection** → Silero VAD segments the audio stream, detecting speech vs. silence
+3. **Speech-to-Text** → Quantized distill-whisper-th ASR converts Thai speech to text in real-time
+4. **Scam Classification** → Fine-tuned WangchanBERTa analyzes the text for scam patterns
+5. **Alert Trigger** → If "SCAM" is detected **3 times**, Qwen3-1.7B generates a persuasive warning
+6. **User Notification** → The system alerts the user with an explanation before they become a victim
+
+### 🤔 Why Not Use Large LLM Alone?
+
+| Approach | Speed | Cost | Connectivity | Thai Support |
+|----------|-------|------|--------------|--------------|
+| **GPT-4 / Claude** ❌ | Slow (2-3s) | Expensive (API cost) | Requires Internet | Not specialized |
+| **BERT + SLM** ✅ | Fast (~1.7s total) | Free (on-premise) | Works offline | Fine-tuned specialized |
+
+Large LLMs are powerful but impractical for real-time on-device detection. Our hybrid approach combines the speed of BERT for pattern detection with the reasoning capability of a Small Language Model (SLM) for generating human-readable explanations—all running locally without API costs or internet dependency.
 
 ## 📋 Prerequisites
 
